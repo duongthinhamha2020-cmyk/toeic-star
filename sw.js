@@ -1,5 +1,5 @@
 // Service worker: cho phép mở app khi mất mạng. Không đụng tới các cuộc gọi AI (Gemini/Claude).
-const V = "toeic-star-v1";
+const V = "toeic-star-v2";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "icon-maskable-512.png"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(V).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
