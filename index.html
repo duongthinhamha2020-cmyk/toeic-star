@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TOEIC Star Desk</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#fff7f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d1525" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TOEIC Star">
+<script>try{var t=localStorage.getItem("toeic:theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,680&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff7f4;--surf:rgba(255,253,251,.82);--ink:#3a2a34;--mut:#8a6d78;--line:#f0d5df;--pink:#e889a8;--pinkd:#c45d82;--yel:#f3d37a;--mint:#7ec8c3;--mintd:#2f8f89;--warn:#c45d82;--ok:#1f7a62;--btnt:#fff;--b1:#ffc3dc;--b2:#fff1a6;--b3:#b8dfff;--b4:#c8f1e2;--bo:.8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1525;--surf:rgba(44,31,54,.82);--ink:#fbeaf3;--mut:#cdb0c0;--line:#4f3a5c;--pink:#f08fb0;--pinkd:#ffb0cb;--yel:#f3d37a;--mint:#7ec8c3;--mintd:#8fe6df;--warn:#ff9bb8;--ok:#6fe0bf;--btnt:#2a1530;--b1:#7d3860;--b2:#6c5f2c;--b3:#2c5878;--b4:#27665a;--bo:.6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1525;--surf:rgba(44,31,54,.82);--ink:#fbeaf3;--mut:#cdb0c0;--line:#4f3a5c;--pink:#f08fb0;--pinkd:#ffb0cb;--yel:#f3d37a;--mint:#7ec8c3;--mintd:#8fe6df;--warn:#ff9bb8;--ok:#6fe0bf;--btnt:#2a1530;--b1:#7d3860;--b2:#6c5f2c;--b3:#2c5878;--b4:#27665a;--bo:.6;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--ink);font:600 16px/1.6 Nunito,system-ui,sans-serif;background:transparent}
+.wash{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--bg)}
+.wash i{position:absolute;border-radius:50%;filter:blur(70px);opacity:var(--bo);animation:drift 26s ease-in-out infinite alternate}
+.wash i:nth-child(1){width:62vmax;height:52vmax;left:-18vmax;top:-14vmax;background:var(--b1)}
+.wash i:nth-child(2){width:54vmax;height:48vmax;right:-16vmax;top:-8vmax;background:var(--b2);animation-duration:32s}
+.wash i:nth-child(3){width:58vmax;height:50vmax;left:18vw;top:30vh;background:var(--b3);animation-duration:36s}
+.wash i:nth-child(4){width:46vmax;height:44vmax;right:-12vmax;bottom:-12vmax;background:var(--b1);animation-duration:30s}
+.wash i:nth-child(5){width:50vmax;height:42vmax;left:-14vmax;bottom:-14vmax;background:var(--b4);animation-duration:34s}
+.wash i:nth-child(6){width:34vmax;height:30vmax;right:14vw;top:42vh;background:var(--b2);animation-duration:40s}
+@keyframes drift{to{transform:translate3d(7vw,5vh,0) scale(1.14)}}
+.bubbles{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.bub{position:absolute;bottom:-90px;border-radius:50%;opacity:0;
+background:radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,0) 20%),radial-gradient(circle at 72% 80%,rgba(255,205,230,.4),transparent 42%),radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 56%,rgba(185,225,255,.5) 72%,rgba(255,195,225,.55) 88%,rgba(255,243,170,.5) 100%);
+box-shadow:inset 0 0 10px rgba(255,255,255,.55),0 0 8px rgba(185,225,255,.3);animation:rise var(--d) linear var(--delay) infinite}
+:root[data-theme="dark"] .bub{filter:brightness(.85)}
+@keyframes rise{0%{transform:translate3d(0,0,0) scale(.9);opacity:0}8%{opacity:.85}50%{transform:translate3d(var(--sw),-60vh,0) scale(1)}92%{opacity:.85}100%{transform:translate3d(calc(var(--sw)*-1),-125vh,0) scale(1.06);opacity:0}}
+@media (prefers-reduced-motion:reduce){.wash i{animation:none}.bubbles{display:none}}
+main{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:22px 16px 64px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:680;margin:0}
+h1{font-size:clamp(2rem,7vw,3rem);line-height:1.1;display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+h2{font-size:1.5rem;color:var(--ink);margin-bottom:6px}h3{font-size:1.15rem;margin-bottom:4px}
+p{margin:0 0 8px}.sub,.meta{color:var(--mut)}.meta{font-size:.9rem}.pre{white-space:pre-wrap}
+.badge{display:inline-flex;align-items:center;gap:6px;margin:0 0 8px;padding:4px 12px;border-radius:999px;background:var(--surf);color:var(--pinkd);font-weight:800;font-size:.85rem;box-shadow:0 1px 3px rgba(58,42,52,.12)}
+.stk{display:inline-block;flex:none;line-height:0}.stk svg{width:100%;height:100%}
+.w40{width:40px;height:40px}.w36{width:36px;height:36px}
+.strow{display:flex;gap:6px;margin:6px 0 12px}
+.decor{display:none}
+@media(min-width:1100px){.strow{display:none}.decor{display:block}.decor .stk{position:absolute;pointer-events:none}}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.btn{padding:8px 16px;border:0;border-radius:999px;background:var(--bg);color:var(--ink);font:800 .9rem Nunito,sans-serif;cursor:pointer;box-shadow:0 1px 2px rgba(58,42,52,.1)}
+.btn.pri{background:var(--pink);color:var(--btnt)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.btn.mint[aria-pressed="true"]{background:var(--mint);color:#3a2a34}
+.btn[disabled]{opacity:.5;cursor:wait}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;padding:4px;border-radius:24px;background:var(--surf);box-shadow:0 1px 3px rgba(58,42,52,.12)}
+.tabs .btn{flex:1 1 auto;background:transparent;box-shadow:none;padding:9px 12px}
+.tabs .btn[aria-pressed="true"]{background:var(--pink);color:var(--btnt)}
+.tabs #mus[aria-pressed="true"]{background:var(--yel);color:#3a2a34}
+.card{backdrop-filter:blur(8px);position:relative;background:var(--surf);border:1px solid var(--line);border-radius:26px;padding:18px;margin-top:20px;box-shadow:0 1px 3px rgba(58,42,52,.08)}
+.card::after{content:"";position:absolute;top:-14px;right:16px;width:36px;height:36px;background:var(--st,none) center/contain no-repeat;transform:rotate(10deg);pointer-events:none}
+.card:nth-child(4n+1){--st:url("data:image/svg+xml,%3Csvg viewBox=%220 0 80 80%22%3E%3Cpath d=%22M40 8l9 18 20 3-14 14 3 20-18-10-18 10 3-20L11 29l20-3z%22 fill=%22%23e889a8%22 stroke=%22%23fff%22 stroke-width=%224%22/%3E%3C/svg%3E")}
+.card:nth-child(4n+2){--st:url("data:image/svg+xml,%3Csvg viewBox=%220 0 80 80%22%3E%3Cpath d=%22M40 68C14 50 8 34 16 24c7-8 18-6 24 4 6-10 17-12 24-4 8 10 2 26-24 44z%22 fill=%22%23e889a8%22 stroke=%22%23fff%22 stroke-width=%224%22/%3E%3Cellipse cx=%2225%22 cy=%2230%22 rx=%225%22 ry=%223%22 fill=%22%23fff%22 opacity=%22.6%22 transform=%22rotate(-30 25 30)%22/%3E%3C/svg%3E")}
+.card:nth-child(4n+3){--st:url("data:image/svg+xml,%3Csvg viewBox=%220 0 80 80%22%3E%3Cpath d=%22M40 6l6 28 28 6-28 6-6 28-6-28-28-6 28-6z%22 fill=%22%23f3d37a%22 stroke=%22%23fff%22 stroke-width=%224%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E")}
+.card:nth-child(4n){--st:url("data:image/svg+xml,%3Csvg viewBox=%220 0 80 80%22%3E%3Cg fill=%22%23f7b6cb%22 stroke=%22%23fff%22 stroke-width=%223%22%3E%3Ccircle cx=%2240%22 cy=%2220%22 r=%2212%22/%3E%3Ccircle cx=%2260%22 cy=%2235%22 r=%2212%22/%3E%3Ccircle cx=%2252%22 cy=%2258%22 r=%2212%22/%3E%3Ccircle cx=%2228%22 cy=%2258%22 r=%2212%22/%3E%3Ccircle cx=%2220%22 cy=%2235%22 r=%2212%22/%3E%3C/g%3E%3Ccircle cx=%2240%22 cy=%2242%22 r=%2210%22 fill=%22%23f3d37a%22 stroke=%22%23fff%22 stroke-width=%223%22/%3E%3C/svg%3E")}
+.card:nth-child(3n+2)::after{left:16px;right:auto;transform:rotate(-12deg)}
+.box{background:var(--bg);border-radius:18px;padding:14px;margin-top:10px}
+.tag{font-size:.75rem;font-weight:800;color:var(--pinkd);text-transform:uppercase;letter-spacing:.02em}
+.big{font:680 1.1rem Fraunces,Georgia,serif}
+select,textarea,input{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:18px;background:var(--bg);color:var(--ink);font:600 1rem Nunito,sans-serif}
+select{width:auto;border-radius:999px;font-size:.9rem;font-weight:800}
+textarea{min-height:240px;resize:vertical;line-height:1.7}
+textarea:focus,input:focus{border-color:var(--pink)}
+button:focus-visible,textarea:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.low{color:var(--warn)}.ok{color:var(--ok)}
+ul{margin:6px 0 0;padding-left:20px}li{margin-bottom:4px}
+.fix{border:2px dashed var(--line);border-radius:16px;padding:10px;margin-top:8px;font-size:.93rem}
+.fix .o{color:var(--warn);text-decoration:line-through}.fix .b{color:var(--ok)}
+.spd{display:inline-flex;flex-wrap:wrap;gap:4px;margin:6px 0 2px}.spd .btn{padding:2px 10px;font-size:.78rem;background:var(--yel);color:#3a2a34}.spd .btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.two{display:grid;gap:10px}@media(min-width:720px){.two{grid-template-columns:1fr 1fr}.hist{display:grid;grid-template-columns:230px 1fr;gap:16px}}
+.ex{font-weight:800}
+.pt{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.scs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.sc{background:var(--bg);border-radius:16px;padding:8px;text-align:center;font-size:.78rem;color:var(--mut)}.sc b{display:block;font:680 1.5rem Fraunces,Georgia,serif;color:var(--ink)}
+#aiset summary{cursor:pointer;font-weight:800}#aiset label{display:block;margin-top:8px}#aiset input{margin:4px 0}#aiset .row select{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wash" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="bubbles" id="bubbles" aria-hidden="true"></div>
+<main>
+<div class="decor" aria-hidden="true"><span class="stk" data-k="star" style="left:-110px;top:8px;width:68px;height:68px;transform:rotate(-12deg)"></span><span class="stk" data-k="smile" style="right:-100px;top:130px;width:60px;height:60px;transform:rotate(6deg)"></span><span class="stk" data-k="heart" style="left:-100px;top:26%;width:52px;height:52px;transform:rotate(-8deg)"></span><span class="stk" data-k="cloud" style="right:-110px;top:40%;width:76px;height:76px"></span><span class="stk" data-k="flower" style="left:-104px;top:54%;width:56px;height:56px;transform:rotate(10deg)"></span><span class="stk" data-k="sparkle" style="right:-90px;top:64%;width:44px;height:44px;transform:rotate(8deg)"></span><span class="stk" data-k="candy" style="left:-96px;top:72%;width:56px;height:56px;transform:rotate(-14deg)"></span><span class="stk" data-k="book" style="left:-108px;bottom:100px;width:62px;height:62px;transform:rotate(3deg)"></span><span class="stk" data-k="pencil" style="right:-100px;bottom:48px;width:68px;height:68px;transform:rotate(-6deg)"></span></div>
+<header>
+<p class="badge">⭐ Mục tiêu 4 kỹ năng</p>
+<h1>TOEIC Star Desk <span class="stk w40" data-k="star"></span></h1>
+<p class="sub">Luyện Writing đúng format ETS. AI chấm theo rubric giám khảo, viết lại bản chặt hơn, rồi mang đúng điểm ngữ pháp và từ đó ra đề Part 5 và câu theo tranh. Bài sửa và sổ tay đều nghe được ở 0.5x, 0.75x, 1x.</p>
+<div class="strow" aria-hidden="true"><span class="stk w36" data-k="smile"></span><span class="stk w36" data-k="pencil"></span><span class="stk w36" data-k="book"></span><span class="stk w36" data-k="heart"></span><span class="stk w36" data-k="cloud"></span><span class="stk w36" data-k="candy"></span></div>
+<button class="btn" id="mus" aria-pressed="false" style="display:none">🎵 Nhạc</button>
+<p class="meta" style="margin:6px 0 0">🔊 Thử giọng đọc: <span id="demo"></span></p>
+<button class="btn" id="theme" style="display:none">🌙 Tối</button>
+<button class="btn pri" id="inst" style="display:none" type="button">📲 Cài app lên màn hình chính</button>
+<p class="meta" id="insthint" style="display:none">Trên iPhone: bấm nút Chia sẻ của Safari rồi chọn “Thêm vào Màn hình chính”.</p>
+<nav class="tabs" id="tabs"></nav>
+</header>
+<details class="card" id="aiset"><summary>⚙️ Cài đặt AI và giọng đọc <span class="meta" id="aistat"></span></summary>
+<p class="meta" style="margin-top:8px">Mở bằng Chrome thường thì không có AI sẵn của Claude, nên AI cần key của chính bạn. Key chỉ lưu trong trình duyệt này và chỉ gửi tới Google hoặc Anthropic. Tạo key Gemini miễn phí ở aistudio.google.com/apikey. Đừng dùng trên máy dùng chung.</p>
+<label class="tag" for="gk">Gemini API key (chấm bài, tạo đề, giọng đọc AI)</label><input id="gk" type="password" autocomplete="off" placeholder="AIza…">
+<label class="tag" for="ck">Claude API key (tùy chọn, chấm bài và tạo đề)</label><input id="ck" type="password" autocomplete="off" placeholder="sk-ant-…">
+<div class="row"><select id="prov" aria-label="AI chấm bài"><option value="auto">AI: tự chọn</option><option value="gemini">AI: Gemini</option><option value="claude">AI: Claude</option></select>
+<select id="eng" aria-label="Giọng đọc"><option value="gemini">Giọng: AI Gemini (biểu cảm)</option><option value="browser">Giọng: trình duyệt</option></select>
+<select id="voice" aria-label="Chọn giọng"></select><select id="style" aria-label="Phong cách đọc"></select></div>
+<details><summary class="meta">Nâng cao: tên model</summary>
+<label class="tag" for="gm">Gemini (chấm bài)</label><input id="gm"><label class="tag" for="gt">Gemini (giọng đọc)</label><input id="gt"><label class="tag" for="cm">Claude</label><input id="cm"></details>
+<div class="row"><button class="btn pri" id="aisave" type="button">Lưu</button><button class="btn" id="aitest" type="button">Thử AI</button><button class="btn" id="aiclear" type="button">Xóa key</button></div>
+<p class="meta" id="aimsg"></p>
+<p class="meta" id="stor"></p>
+<div id="aidlbox"><div class="row"><button class="btn pri" id="aidl" type="button">💾 Tải bản đã cài sẵn key</button></div><p class="meta">Tạo một file đã lưu sẵn key và giọng bạn chọn, mở lên là dùng ngay, không cần nhập lại. Chỉ giữ file này trên máy bạn, đừng đăng công khai hay gửi người khác vì ai có file cũng lấy được key.</p></div>
+<p class="meta">Thử giọng: <span id="aivoice"></span></p>
+</details>
+
+
+<section id="p">
+ <div class="card">
+  <div class="row" id="targets"></div>
+  <div class="row" id="tasks"></div>
+  <div class="row"><select id="field" aria-label="Lĩnh vực"></select></div>
+  <article class="box" id="prompt"></article>
+  <div class="row"><button class="btn" id="next">Đề khác</button><button class="btn" id="gen">✨ Tạo đề bằng AI</button></div>
+  <p class="meta" id="gnote"></p>
+  <label for="draft" class="tag">Bài của bạn</label>
+  <textarea id="draft" placeholder="Viết bằng tiếng Anh. Trả lời đủ ý trước khi trau chuốt từ."></textarea>
+  <div class="row"><span class="meta"><b id="wc">0</b> từ</span><button class="btn pri" id="grade" style="margin-left:auto">Chữa và viết lại</button></div>
+  <p class="low" id="err"></p>
+ </div>
+ <div id="res"></div>
+</section>
+
+<section id="n" hidden></section>
+<section id="h" hidden></section>
+<section id="g" hidden></section>
+</main>
+
+<script>
+const SRC0="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+const PROMPTS=[{"field":"Công việc","focus":"800","title":"Họp đầu tuần","mustUse":["discuss","schedule"],"body":"A manager and two colleagues are standing around a whiteboard in a small meeting room. One person is pointing at a calendar.","id":"sentence-1","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Công việc","focus":"800","title":"Bàn làm việc","mustUse":["review","report"],"body":"A woman is sitting at a desk with a laptop and a printed report. She is holding a pen.","id":"sentence-2","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Dịch vụ","focus":"800","title":"Quầy lễ tân","mustUse":["assist","guest"],"body":"A hotel receptionist is smiling and handing a key card to a guest who has a suitcase.","id":"sentence-3","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Mua sắm","focus":"800","title":"Cửa hàng","mustUse":["choose","size"],"body":"A shop assistant is showing two jackets to a customer in a clothing store.","id":"sentence-4","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Du lịch","focus":"800","title":"Sân bay","mustUse":["wait","departure"],"body":"Travelers are sitting in an airport lounge. A departure board is visible above them.","id":"sentence-5","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Sức khỏe","focus":"800","title":"Phòng khám","mustUse":["explain","symptom"],"body":"A doctor is talking to a patient who is sitting on an examination table.","id":"sentence-6","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Giáo dục","focus":"800","title":"Lớp học","mustUse":["present","project"],"body":"A student is standing at the front of a classroom and pointing at a poster while classmates listen.","id":"sentence-7","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Công nghệ","focus":"850","title":"Hỗ trợ IT","mustUse":["install","software"],"body":"An IT specialist is kneeling beside a colleague’s desk and looking at a computer screen.","id":"sentence-8","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Sự kiện","focus":"800","title":"Hội nghị","mustUse":["register","badge"],"body":"People are lining up at a registration table. Staff members are handing out name badges.","id":"sentence-9","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Nhà ở","focus":"800","title":"Xem nhà","mustUse":["show","apartment"],"body":"A real-estate agent is opening the door of an empty apartment for a couple.","id":"sentence-10","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Môi trường","focus":"850","title":"Công viên","mustUse":["collect","litter"],"body":"Volunteers wearing gloves are picking up trash along a park path. Bags are already half full.","id":"sentence-11","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Ẩm thực","focus":"800","title":"Nhà hàng","mustUse":["recommend","dish"],"body":"A server is standing beside a table and pointing at a menu while two customers look at it.","id":"sentence-12","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Giao thông","focus":"800","title":"Ga tàu","mustUse":["check","ticket"],"body":"A conductor is looking at a passenger’s ticket beside an open train door.","id":"sentence-13","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Công việc","focus":"850","title":"Kho hàng","mustUse":["load","shipment"],"body":"Two warehouse workers are placing boxes onto a pallet next to a delivery truck.","id":"sentence-14","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Dịch vụ","focus":"850","title":"Tổng đài","mustUse":["answer","inquiry"],"body":"A customer-service agent is wearing a headset and typing while looking at a monitor full of messages.","id":"sentence-15","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Giáo dục","focus":"850","title":"Thư viện","mustUse":["borrow","textbook"],"body":"A librarian is scanning a stack of books for a student at the checkout desk.","id":"sentence-16","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Sức khỏe","focus":"850","title":"Nhà thuốc","mustUse":["advise","dosage"],"body":"A pharmacist is holding a medicine box and speaking to a customer across the counter.","id":"sentence-17","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Du lịch","focus":"850","title":"Khách sạn","mustUse":["request","late"],"body":"A guest is speaking to a front-desk clerk. A clock on the wall shows evening time, and the guest looks tired.","id":"sentence-18","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Công nghệ","focus":"950","title":"Demo sản phẩm","mustUse":["demonstrate","feature"],"body":"A product specialist is showing a tablet to a small group of clients in a bright showroom.","id":"sentence-19","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Tài chính","focus":"950","title":"Ngân hàng","mustUse":["compare","account"],"body":"A banker and a client are looking together at a brochure on a desk in a private office.","id":"sentence-20","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Sự kiện","focus":"850","title":"Sân khấu","mustUse":["adjust","microphone"],"body":"A technician on a stage is adjusting a microphone while chairs are being arranged in the audience.","id":"sentence-21","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Mua sắm","focus":"850","title":"Siêu thị","mustUse":["restock","shelf"],"body":"An employee is placing bottles onto a nearly empty supermarket shelf.","id":"sentence-22","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Công việc","focus":"950","title":"Phỏng vấn","mustUse":["describe","experience"],"body":"Two people are sitting across a table in an office. One is taking notes while the other speaks.","id":"sentence-23","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Môi trường","focus":"950","title":"Nhà máy","mustUse":["inspect","equipment"],"body":"An engineer wearing a hard hat is examining a large machine in a factory, with a clipboard in hand.","id":"sentence-24","task":"sentence","minutes":2,"wordHint":"1 câu hoàn chỉnh, dùng đủ 2 từ gợi ý"},{"field":"Công việc","focus":"800","title":"Đổi lịch họp","body":"From: Dana Ruiz, Project Coordinator\nTo: You\nSubject: Thursday meeting\n\nHi,\nOur client asked to move Thursday’s 10:00 planning meeting to Friday morning. Can you attend at 9:30 instead? Please also tell me whether you can send the draft agenda by Wednesday afternoon.\nThanks,\nDana\n\nWrite an email responding to Dana. In your email:\n• Say whether you can attend the new time\n• Mention one item you want on the agenda\n• Ask one question about the meeting","id":"email-1","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Dịch vụ","focus":"850","title":"Khiếu nại giao hàng","body":"From: Order Support, Harbor Home\nTo: You\nSubject: Your order #4481\n\nDear Customer,\nWe are sorry your table arrived with a scratched surface. Please reply and tell us how you would like us to resolve this. We can send a replacement or offer a partial refund. Photos would help our warehouse team.\nSincerely,\nHarbor Home Support\n\nWrite a response. In your email:\n• Describe the problem briefly\n• Choose a solution and explain why\n• Ask what you should do with the damaged table","id":"email-2","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Du lịch","focus":"800","title":"Đổi phòng khách sạn","body":"From: Front Desk, Lumen Hotel\nTo: You\nSubject: Your reservation, June 12–14\n\nDear Guest,\nWe cannot provide the city-view room you booked because of unexpected maintenance. A garden-view room is available at the same rate, or we can move you to June 19–21 in a city-view room.\nPlease tell us your preference by tomorrow.\nBest regards,\nLumen Hotel\n\nRespond to the hotel. In your email:\n• State your preference\n• Give a reason\n• Ask about one hotel service you will need","id":"email-3","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Giáo dục","focus":"850","title":"Xin gia hạn bài tập","body":"From: Professor Hale\nTo: You\nSubject: Case-study deadline\n\nHello,\nYour case study is due this Friday. If you need an extension, email me today with the reason and a realistic new date. I can allow up to four extra days, but only if you have started the analysis.\nProfessor Hale\n\nWrite an email to Professor Hale. In your email:\n• Request a new deadline\n• Explain your situation without making excuses that sound vague\n• Say what part of the assignment you have already completed","id":"email-4","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Nhà ở","focus":"800","title":"Báo sửa chữa","body":"From: Building Management\nTo: All residents\nSubject: Water shutoff on Tuesday\n\nResidents,\nWater will be off on Tuesday from 9:00 a.m. to 1:00 p.m. for pipe repairs. If this creates a serious problem for your household, reply to this email so we can note special cases. Please also report any leaks you have noticed in the last month.\nThank you,\nManagement\n\nReply to management. In your email:\n• Say how the shutoff affects you\n• Report one maintenance issue, or say you have none\n• Ask when normal service will resume if repairs run late","id":"email-5","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Sự kiện","focus":"850","title":"Xác nhận diễn giả","body":"From: Nora Blake, Events\nTo: You\nSubject: Panel on May 8\n\nHi,\nThank you for agreeing to join our customer panel. Please confirm that you can arrive by 8:40 a.m., send a 40-word biography, and tell us whether you need slides shown. The session is 25 minutes, with questions at the end.\nNora\n\nRespond to Nora. In your email:\n• Confirm or adjust the arrival time\n• Summarize what you will talk about\n• Ask about the audience or the room setup","id":"email-6","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Công nghệ","focus":"950","title":"Sự cố phần mềm","body":"From: IT Helpdesk\nTo: You\nSubject: Ticket 902 — shared drive\n\nHello,\nWe saw repeated failed logins to the shared drive from your account this morning. For security, access is paused. Reply with the last time you successfully opened a file, whether you were on the office network or at home, and whether anyone else uses your laptop.\nWe will restore access after we verify this.\nIT Helpdesk\n\nWrite a precise reply. In your email:\n• Answer all three questions\n• Mention any unusual message you saw\n• Ask how you should save today’s files until access returns","id":"email-7","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Sức khỏe","focus":"800","title":"Đổi lịch khám","body":"From: Riverside Clinic\nTo: You\nSubject: Appointment on Wednesday\n\nDear Patient,\nDr. Okonkwo needs to reschedule your Wednesday 2:15 appointment. Openings are Thursday at 11:00 or Friday at 4:40. Please tell us which you prefer and whether you need a note for your employer.\nRiverside Clinic\n\nReply to the clinic. In your email:\n• Choose a time\n• Say if you need documentation\n• Mention one question you want to ask the doctor","id":"email-8","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Mua sắm","focus":"850","title":"Đơn hàng công ty","body":"From: Samir Patel, Office Supplies\nTo: You\nSubject: Quote for notebooks and toner\n\nHello,\nAttached is a quote for 40 notebooks and 6 toner cartridges. The toner you listed is back-ordered for two weeks. We can substitute a compatible cartridge that ships tomorrow, at a 12% lower price. Please confirm quantities and the delivery address.\nSamir\n\nRespond to Samir. In your email:\n• Accept or reject the substitute, with a reason\n• Confirm the delivery details\n• Ask about the return policy","id":"email-9","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Du lịch","focus":"950","title":"Lịch trình đoàn","body":"From: Elena Vos, Tour Lead\nTo: You\nSubject: Client visit in Busan\n\nHello,\nNext month you will host three clients for a plant tour. They land at 13:10 and must leave for the airport at 18:40 the same day. Please propose a realistic schedule, say who will meet them, and flag any safety briefing they must complete before entering the floor.\nElena\n\nWrite an organized reply. In your email:\n• Propose a timed plan\n• Name the host and the meeting point\n• Explain one constraint they should know in advance","id":"email-10","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Công việc","focus":"950","title":"Từ chối tăng ca","body":"From: Your supervisor, Mr. Ito\nTo: You\nSubject: Saturday inventory\n\nHello,\nWe are short-staffed for Saturday’s inventory count from 8:00 a.m. to 2:00 p.m. I know you worked last weekend. Could you still cover four hours? If not, please suggest a colleague who knows the new barcode system.\nMr. Ito\n\nReply professionally. In your email:\n• Accept part of the shift or decline\n• Give a concrete reason\n• Offer a useful alternative","id":"email-11","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Giáo dục","focus":"800","title":"Câu lạc bộ","body":"From: Campus Activities\nTo: You\nSubject: Language-exchange club\n\nHi,\nWe are restarting the Tuesday language exchange. Could you lead the first session on April 7? We need a 30-minute plan, a room preference, and an estimate of how many students you expect.\nThanks,\nCampus Activities\n\nRespond to the office. In your email:\n• Accept or decline the role\n• Describe the session briefly if you accept, or suggest someone if you decline\n• Ask about equipment","id":"email-12","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Tài chính","focus":"950","title":"Sai sót hóa đơn","body":"From: Billing, Apex Print\nTo: You\nSubject: Invoice 2207\n\nDear Customer,\nInvoice 2207 charges your department for 500 color brochures. Our notes say the approved order was 300. Please confirm the correct quantity and whether we should issue a credit or reprint the difference. Payment terms are 15 days.\nApex Print Billing\n\nWrite a clear business reply. In your email:\n• State the correct quantity\n• Choose credit or reprint\n• Ask them to send a revised document before you approve payment","id":"email-13","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Môi trường","focus":"850","title":"Ngày tình nguyện","body":"From: Green Office Committee\nTo: You\nSubject: River cleanup, May 18\n\nHello,\nYour team signed up for the river cleanup. We still need a head count, shirt sizes, and to know if anyone requires transport from the central station at 8:00. Please reply by Friday.\nGreen Office\n\nReply with the information. In your email:\n• Give a head count\n• Answer the transport question\n• Ask what volunteers should bring","id":"email-14","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Sự kiện","focus":"800","title":"Đặt suất ăn","body":"From: Catering Desk\nTo: You\nSubject: Workshop lunch\n\nHi,\nFor your workshop on the 21st, please confirm the number of lunches, any allergies, and whether you want the buffet at 12:00 or 12:30. We need this by Thursday noon.\nCatering Desk\n\nWrite a short reply that answers every point and asks about vegetarian options.","id":"email-15","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Dịch vụ","focus":"950","title":"Khách hàng khó","body":"From: A customer, Luis Ortega\nTo: You (account manager)\nSubject: Repeated delays\n\nMr./Ms. Manager,\nThis is the third week our store has received the display stands late. My staff stayed after closing twice. If you cannot guarantee delivery before 2:00 p.m. every Tuesday, we will switch suppliers next month. I expect a direct answer, not another apology.\nLuis Ortega\n\nReply as the account manager. In your email:\n• Acknowledge the impact on his staff\n• Give one concrete corrective step with a time\n• Offer a specific goodwill gesture without overpromising","id":"email-16","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Công nghệ","focus":"850","title":"Đào tạo nội bộ","body":"From: People Team\nTo: You\nSubject: Spreadsheet workshop\n\nHello,\nWe would like you to teach a 45-minute workshop on the new budget spreadsheet. Possible slots are Tuesday 15:00 or Wednesday 9:30. Please choose one, list what participants should prepare, and say whether the session should be recorded.\nPeople Team\n\nRespond fully. Also ask how many people will attend.","id":"email-17","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Nhà ở","focus":"850","title":"Gia hạn hợp đồng","body":"From: Harbor Rentals\nTo: You\nSubject: Lease ending August 31\n\nDear Tenant,\nYour lease ends on August 31. You may renew for 12 months at a 4% increase or switch to a month-to-month plan at a higher rate. Please tell us your decision by July 15. If you are leaving, we need a forwarding address for the deposit.\nHarbor Rentals\n\nReply with a decision, a reason, and one question about fees or the deposit.","id":"email-18","task":"email","minutes":10,"wordHint":"khoảng 80–140 từ, trả lời hết yêu cầu"},{"field":"Công việc","focus":"850","title":"Làm việc tại nhà","body":"Do you agree or disagree with the following statement? Employees are more productive when they are allowed to work from home two days a week. Give reasons and examples to support your opinion.","id":"essay-1","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Giáo dục","focus":"850","title":"Kỹ năng thực tế","body":"Do you agree or disagree? Universities should require every student to complete an internship before graduation. Support your opinion with specific reasons.","id":"essay-2","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Công nghệ","focus":"950","title":"Họp trực tuyến","body":"Some companies want to replace most in-person meetings with video calls. Do you think this is a good idea? Explain your view with reasons and examples.","id":"essay-3","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Môi trường","focus":"850","title":"Giao thông công cộng","body":"Do you agree or disagree? Cities should charge higher fees for driving private cars into the center in order to reduce pollution. Support your opinion.","id":"essay-4","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Sức khỏe","focus":"800","title":"Giờ nghỉ trưa","body":"Some employers give workers a full hour for lunch away from their desks. Others expect people to eat quickly and return to work. Which approach is better for a company? Explain why.","id":"essay-5","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Dịch vụ","focus":"850","title":"Phản hồi khách hàng","body":"Do you agree or disagree? Businesses should always make customer reviews public, even when the reviews are negative. Give reasons and examples.","id":"essay-6","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Du lịch","focus":"800","title":"Du lịch công tác","body":"Some people think business travel is still necessary. Others think video meetings can replace almost all trips. What is your opinion? Support it with reasons.","id":"essay-7","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Mua sắm","focus":"850","title":"Mua hàng online","body":"Do you agree or disagree with this statement? Shopping online is better for most households than shopping in physical stores. Explain your position.","id":"essay-8","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Giáo dục","focus":"950","title":"Đánh giá bằng dự án","body":"Some teachers want to grade students mainly through projects instead of written tests. Do you think this change would improve learning? Support your opinion carefully.","id":"essay-9","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Công việc","focus":"950","title":"Thăng chức","body":"Do you agree or disagree? The best way to choose a manager is to promote the person with the strongest technical skills. Give reasons and examples.","id":"essay-10","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Tài chính","focus":"950","title":"Tiết kiệm bắt buộc","body":"Some people believe companies should automatically place part of every paycheck into a savings plan unless the employee opts out. Do you think this is a good policy? Explain.","id":"essay-11","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Sự kiện","focus":"800","title":"Sự kiện trực tiếp","body":"A city has a limited budget. Should it spend more on free outdoor community events or on improving public libraries? Choose one and explain why.","id":"essay-12","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Nhà ở","focus":"850","title":"Ở gần chỗ làm","body":"Do you agree or disagree? It is more important to live close to work than to live in a larger home far from the office. Support your view.","id":"essay-13","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Môi trường","focus":"950","title":"Bao bì","body":"Many stores want to stop providing free shopping bags. Do you think customers should pay for every bag, or should stores find another solution? Explain your opinion with reasons.","id":"essay-14","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Công nghệ","focus":"850","title":"Điện thoại ở nơi làm","body":"Some managers ban personal phones during work hours. Do you think this rule helps or hurts a workplace? Give specific reasons.","id":"essay-15","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"},{"field":"Sức khỏe","focus":"950","title":"Bảo hiểm","body":"Do you agree or disagree? Employers, not individual workers, should be mainly responsible for paying for health insurance. Support your opinion.","id":"essay-16","task":"essay","minutes":30,"wordHint":"khoảng 280–320 từ, có mở–thân–kết"}];
+const FIELDS=["Tất cả",...new Set(PROMPTS.map(p=>p.field))];
+const TASKS=[["sentence","Câu theo tranh"],["email","Email"],["essay","Bài nêu ý kiến"]];
+const TNAME={sentence:"Câu tranh",email:"Email",essay:"Essay"},TMAX={sentence:3,email:4,essay:5};
+const $=i=>document.getElementById(i);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const ld=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
+const uid=()=>Math.random().toString(36).slice(2,10);
+const words=t=>t.trim()?t.trim().split(/\s+/).length:0;
+let tab="p",target="950",task="email",field="Tất cả",prompt=PROMPTS.find(p=>p.task==="email")||PROMPTS[0],sample=null,busy=false;
+let attempts=ld("toeic:attempts",[]),notes=ld("toeic:notes",[]),openId=null;
+
+/* ---- phát âm 0.5x / 0.75x / 1x ---- */
+const VI=/[àáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
+const eng=t=>String(t||"").split(/\n+/).map(s=>s.trim()).filter(s=>s&&!VI.test(s)).join(". ");
+const pspeech=p=>{const ex=eng(p.example),ti=eng(p.title);return p.kind==="vocab"?[ti,ex].filter(Boolean).join(". "):(ex||ti)};
+/* ---- AI: Claude trong claude.ai, hoặc key Gemini/Claude khi mở bằng trình duyệt thường ---- */
+const CFG0={provider:"auto",gkey:"",ckey:"",engine:"gemini",voice:"Kore",style:"warm",gmodel:"gemini-3-flash-preview",gtts:"gemini-3.1-flash-tts-preview",cmodel:"claude-sonnet-5-5"};
+const EMBED=null;/*EMBED*/
+let cfg=Object.assign({},CFG0,EMBED||{},ld("toeic:ai",{}));
+function stOK(){try{localStorage.setItem("toeic:t","1");return localStorage.getItem("toeic:t")==="1"}catch(e){return false}}
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{})}catch(e){}
+const saveCfg=()=>sv("toeic:ai",cfg);
+function aiMode(){
+ if(sample)return "app";
+ if(cfg.provider==="gemini")return cfg.gkey?"gemini":null;
+ if(cfg.provider==="claude")return cfg.ckey?"claude-key":null;
+ if(sample)return "app";if(cfg.gkey)return "gemini";if(cfg.ckey)return "claude-key";return null}
+const aiReady=()=>!!aiMode();
+const httpErr=s=>({code:s===429?"rate_limited":(s===400||s===401||s===403)?"bad_key":"http"});
+function parseJSON(t){t=String(t).replace(/```json|```/g,"").trim();const a=t.indexOf("{"),b=t.lastIndexOf("}");return JSON.parse(t.slice(a,b+1))}
+async function askJSON(prompt){
+ const m=aiMode();if(m==="app")return sample.json(prompt,{cache:false});
+ let r,text;
+ try{
+  if(m==="gemini"){
+   r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(cfg.gmodel)}:generateContent`,{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":cfg.gkey},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{responseMimeType:"application/json",temperature:.8}})});
+   if(!r.ok)throw httpErr(r.status);const d=await r.json();text=((d.candidates&&d.candidates[0]&&d.candidates[0].content.parts)||[]).map(p=>p.text||"").join("")}
+  else{
+   r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":cfg.ckey,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:cfg.cmodel,max_tokens:4000,messages:[{role:"user",content:prompt}]})});
+   if(!r.ok)throw httpErr(r.status);const d=await r.json();text=(d.content||[]).map(p=>p.text||"").join("")}
+ }catch(e){if(e&&e.code)throw e;throw {code:"network"}}
+ return parseJSON(text)}
+function refreshAI(){
+ const m=aiMode(),hasKey=!!(cfg.gkey||cfg.ckey);
+ $("aidlbox").style.display=sample?"none":"";
+ $("stor").textContent=!hasKey?"":stOK()?"✅ Key đang được lưu trên trình duyệt này.":"⚠️ Trình duyệt này không lưu được dữ liệu (hay gặp khi mở file từ điện thoại hoặc chế độ riêng tư), nên key sẽ mất khi đóng trang. Hãy bấm “Tải bản đã cài sẵn key” để khỏi phải nhập lại.";
+ $("aistat").textContent=m==="app"?"· đang dùng AI của Claude":m==="gemini"?"· đang dùng Gemini":m==="claude-key"?"· đang dùng Claude (key của bạn)":"· chưa có AI, bấm để nhập key";
+ $("gnote").textContent=m?"":"Chưa có AI: mở ⚙️ Cài đặt AI để dán key Gemini (miễn phí) hoặc key Claude.";
+}
+
+/* ---- giọng đọc có biểu cảm: Gemini TTS, hoặc giọng trình duyệt chọn kỹ + ngắt câu, lên giọng ---- */
+const STYLES={warm:"Say warmly, clearly and expressively, like a friendly English teacher: ",cheer:"Say cheerfully, with lively and natural intonation: ",calm:"Say calmly and clearly, with gentle natural intonation: "};
+let resetA=null,curAudio=null;
+const useGemini=()=>!!cfg.gkey&&cfg.engine==="gemini"&&!sample;
+function stopSay(){const r=resetA;resetA=null;if(curAudio){curAudio.pause();curAudio=null}if(r)r();if(window.speechSynthesis)speechSynthesis.cancel()}
+const ttsCache=new Map();
+function wavBlob(b64){const bin=atob(b64),n=bin.length,buf=new ArrayBuffer(44+n),v=new DataView(buf),ws=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
+ ws(0,"RIFF");v.setUint32(4,36+n,true);ws(8,"WAVE");ws(12,"fmt ");v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,24000,true);v.setUint32(28,48000,true);v.setUint16(32,2,true);v.setUint16(34,16,true);ws(36,"data");v.setUint32(40,n,true);
+ const u=new Uint8Array(buf,44);for(let i=0;i<n;i++)u[i]=bin.charCodeAt(i);return new Blob([buf],{type:"audio/wav"})}
+async function geminiAudio(text){
+ const key=cfg.voice+"|"+cfg.style+"|"+text;if(ttsCache.has(key))return ttsCache.get(key);
+ let r;try{r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(cfg.gtts)}:generateContent`,{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":cfg.gkey},body:JSON.stringify({contents:[{parts:[{text:STYLES[cfg.style]+text}]}],generationConfig:{responseModalities:["AUDIO"],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:cfg.voice}}}}})})}catch(e){throw {code:"network"}}
+ if(!r.ok)throw httpErr(r.status);
+ const d=await r.json(),part=((d.candidates&&d.candidates[0]&&d.candidates[0].content.parts)||[]).find(p=>p.inlineData);
+ if(!part)throw {code:"http"};
+ const url=URL.createObjectURL(wavBlob(part.inlineData.data));ttsCache.set(key,url);return url}
+async function sayGemini(t,rate,onReset){
+ const url=await geminiAudio(t.slice(0,900));if(resetA!==onReset)return;
+ const a=new Audio(url);curAudio=a;a.preservesPitch=true;a.webkitPreservesPitch=true;a.mozPreservesPitch=true;a.playbackRate=rate;
+ const done=()=>{if(resetA===onReset){resetA=null;curAudio=null;onReset()}};a.onended=done;a.onerror=done;await a.play()}
+function bestVoice(){const v=speechSynthesis.getVoices().filter(x=>/^en[-_]/i.test(x.lang));
+ for(const re of [/natural|neural|online/i,/google us english/i,/samantha|ava|allison|zoe|siri/i,/aria|jenny|sonia|libby/i,/en[-_]US/i]){const f=v.find(x=>re.test(x.name+" "+x.lang));if(f)return f}return v[0]}
+function sayBrowser(t,rate,onReset){
+ const s=speechSynthesis,parts=(t.match(/[^.!?;:]+[.!?;:]*\s*/g)||[t]).map(x=>x.trim()).filter(Boolean),voice=bestVoice();let i=0;
+ const next=()=>{if(resetA!==onReset)return;if(i>=parts.length){resetA=null;onReset();return}
+  const p=parts[i++],u=new SpeechSynthesisUtterance(p),q=/\?$/.test(p),e=/!$/.test(p);
+  u.lang="en-US";if(voice)u.voice=voice;u.rate=rate*(e?1.04:1);u.pitch=q?1.18:e?1.12:1.04;
+  u.onend=()=>setTimeout(next,rate<=.6?260:rate<=.8?180:120);u.onerror=()=>{if(resetA===onReset){resetA=null;onReset()}};s.speak(u)};
+ next()}
+async function say(t,rate,onReset){
+ const prev=resetA;resetA=onReset;if(prev)prev();if(curAudio){curAudio.pause();curAudio=null}if(window.speechSynthesis)speechSynthesis.cancel();
+ let fb="";
+ if(useGemini()){try{await sayGemini(t,rate,onReset);return ""}catch(e){if(resetA!==onReset)return "";fb=(aiErr(e)||"Gemini chưa đọc được.")+" Đang dùng giọng trình duyệt."}}
+ if(!window.speechSynthesis){if(resetA===onReset){resetA=null;onReset()}throw {code:"nospeech"}}
+ sayBrowser(t,rate,onReset);return fb}
+function spd(text){const w=el("span","spd");w.setAttribute("role","group");w.setAttribute("aria-label","Nghe phát âm");
+ if(!String(text||"").trim())return w;
+ const R=[0.5,0.75,1],bs=[],note=el("span","meta");let cur=null,load=null;
+ const paint=()=>bs.forEach((b,i)=>{b.setAttribute("aria-pressed",String(R[i]===cur));b.textContent=(i===0?"🔊 ":"")+(load===R[i]?"…":R[i]+"x")});
+ R.forEach(r=>{const b=el("button","btn",(r===0.5?"🔊 ":"")+r+"x");b.type="button";b.setAttribute("aria-label","Nghe tốc độ "+r+"x");
+  b.onclick=async()=>{if(cur===r){stopSay();return}note.textContent="";cur=r;load=useGemini()?r:null;paint();
+   try{const fb=await say(text,r,()=>{cur=null;load=null;paint()});load=null;paint();if(fb)note.textContent=fb}
+   catch(e){cur=null;load=null;paint();note.textContent=e&&e.code==="nospeech"?"Trình duyệt này chưa hỗ trợ giọng đọc.":(aiErr(e)||"Không phát được âm thanh.")}};
+  bs.push(b);w.appendChild(b)});
+ w.appendChild(note);return w}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>{}}
+
+/* ---- giao diện chung ---- */
+function chipRow(host,items,get,set,cls){host.textContent="";items.forEach(([v,l])=>{const b=el("button","btn "+(cls||""),l);b.type="button";b.setAttribute("aria-pressed",String(get()===v));b.onclick=()=>{set(v)};host.appendChild(b)})}
+const MUS=$("mus"),THM=$("theme");MUS.style.display="";THM.style.display="";
+function renderTabs(){const t=$("tabs");t.textContent="";[["p","✏️ Luyện"],["n","📖 Sổ tay"],["g","🎮 Ôn tập"],["h","🕘 Bài đã chữa"]].forEach(([k,l])=>{const b=el("button","btn",l);b.setAttribute("aria-pressed",String(tab===k));b.onclick=()=>{stopSay();tab=k;renderTabs();["p","n","h","g"].forEach(x=>$(x).hidden=x!==tab);if(k==="n")renderNotes();if(k==="h")renderHistory();if(k==="g")renderGame()};t.appendChild(b)});t.appendChild(MUS);t.appendChild(THM)}
+function pool(){return PROMPTS.filter(p=>p.task===task&&(field==="Tất cả"||p.field===field))}
+function renderPrompt(){
+ chipRow($("targets"),["800","850","950"].map(x=>[x,x]),()=>target,v=>{target=v;renderPrompt()});
+ chipRow($("tasks"),TASKS,()=>task,v=>{task=v;prompt=pool()[0]||PROMPTS.find(p=>p.task===v);renderPrompt()},"mint");
+ const f=$("field");if(!f.options.length){FIELDS.forEach(x=>f.appendChild(new Option(x,x)));f.onchange=()=>{field=f.value;const p=pool();prompt=p[0]||prompt;renderPrompt()}}
+ f.value=field;
+ const b=$("prompt");b.textContent="";
+ b.append(el("p","tag",`${prompt.field} · ${prompt.minutes} phút · nên viết ở mốc ${prompt.focus}+`),el("h2","",prompt.title));
+ if(prompt.mustUse)b.appendChild(el("p","",`Bắt buộc dùng: ${prompt.mustUse.join(" · ")}`));
+ b.append(el("p","pre",prompt.body),spd(prompt.body),el("p","meta",prompt.wordHint));
+ $("res").textContent="";$("err").textContent="";
+}
+$("next").onclick=()=>{const p=pool();prompt=p[Math.floor(Math.random()*p.length)]||prompt;$("draft").value="";$("wc").textContent="0";renderPrompt()};
+$("draft").oninput=()=>{$("wc").textContent=words($("draft").value)};
+
+/* ---- tạo đề bằng AI ---- */
+$("gen").onclick=async()=>{
+ const n=$("gnote");n.textContent="";if(!aiReady()){n.textContent="Chưa có AI: mở ⚙️ Cài đặt AI để dán key Gemini (miễn phí) hoặc key Claude.";return}
+ const b=$("gen");b.disabled=true;b.textContent="Đang tạo đề…";
+ const base=PROMPTS.find(p=>p.task===task);
+ const shape=task==="sentence"?'{"title":"tên ngắn tiếng Việt","body":"mô tả bức tranh bằng 1-2 câu tiếng Anh","mustUse":["word1","word2"]}':'{"title":"tên ngắn tiếng Việt","body":"đề bài đầy đủ bằng tiếng Anh"}';
+ const kind={sentence:"Write a Sentence Based on a Picture (describe the scene in words, plus two required words)",email:"Respond to a Written Request (an email the student must reply to, with 2-3 things to address)",essay:"Write an Opinion Essay (a clear opinion question)"}[task];
+ const q=`Create one new original TOEIC Writing question: ${kind}. Difficulty for target score ${target}. Field: ${field==="Tất cả"?"any workplace or daily-life field":field}. Reply ONLY with JSON: ${shape}. Seed: ${Math.random().toString(36).slice(2,8)}`;
+ try{const r=await askJSON(q);if(!r.title||!r.body)throw 0;
+  prompt={id:"ai"+uid(),task,field:field==="Tất cả"?"AI":field,focus:target,title:String(r.title),body:String(r.body),mustUse:task==="sentence"&&Array.isArray(r.mustUse)&&r.mustUse.length>1?[String(r.mustUse[0]),String(r.mustUse[1])]:undefined,minutes:base.minutes,wordHint:base.wordHint};
+  $("draft").value="";$("wc").textContent="0";renderPrompt()}
+ catch(e){n.textContent=aiErr(e)||"Chưa tạo được đề, thử lại nhé."}
+ b.disabled=false;b.textContent="✨ Tạo đề bằng AI";
+};
+
+/* ---- chữa bài bằng AI ---- */
+$("grade").onclick=async()=>{
+ const err=$("err");err.textContent="";const text=$("draft").value;
+ if(!aiReady()){err.textContent="Chưa có AI: mở ⚙️ Cài đặt AI để dán key Gemini (miễn phí) hoặc key Claude.";return}
+ if(words(text)<3){err.textContent="Hãy viết ít nhất vài từ rồi chữa nhé.";return}
+ const b=$("grade");b.disabled=true;b.textContent="Đang chữa…";
+ const mx=TMAX[task];
+ const q=`You are a strict, honest ETS-style TOEIC Writing rater. The student aims for a target of ${target}. Task type: ${TNAME[task]} scored 0-${mx} using ETS rubric ideas (${task==="sentence"?"one complete sentence, no grammar errors, both required words used in correct form, matches the picture":task==="email"?"answers every part, coherent, right tone, errors do not hide meaning":"clear stance, well organised, specific support, effective language; effective essays are about 300 words"}). Do not inflate the score.
+PROMPT TITLE: ${prompt.title}
+PROMPT: ${prompt.body}
+${prompt.mustUse?"REQUIRED WORDS: "+prompt.mustUse.join(", "):""}
+STUDENT RESPONSE:
+${text}
+
+Reply ONLY with JSON, no markdown: {"taskScore":integer 0-${mx},"rubricNote":"1-2 câu tiếng Việt giải thích điểm","checks":[{"label":"tiêu chí rubric bằng tiếng Việt","met":true,"detail":"ngắn gọn tiếng Việt"}],"targetFit":"tiếng Việt: còn thiếu gì để đạt mốc ${target}","summary":"2-3 câu nhận xét tiếng Việt","corrections":[{"original":"đoạn trích từ bài","fixed":"bản sửa tiếng Anh","why":"giải thích tiếng Việt"}],"points":[{"kind":"grammar or vocab","title":"cấu trúc hoặc từ (English)","meaning":"nghĩa tiếng Việt","explanation":"cách dùng tiếng Việt","example":"English example sentence"}],"polished":"bản viết lại tiếng Anh cao điểm hơn","whyHigher":"tiếng Việt: vì sao bản này cao điểm hơn"}. Use 4-6 checks, at most 6 corrections and 4 points.`;
+ try{
+  const r=await askJSON(q);
+  const arr=x=>Array.isArray(x)?x:[];
+  const a={id:uid(),createdAt:Date.now(),target,task,field:prompt.field,promptTitle:prompt.title,promptBody:prompt.body,mustUse:prompt.mustUse,original:text,
+   taskScore:Math.max(0,Math.min(mx,Math.round(Number(r.taskScore)||0))),taskMax:mx,rubricNote:String(r.rubricNote||""),
+   checks:arr(r.checks).map(c=>({label:String(c.label||""),met:c.met===true,detail:String(c.detail||"")})),
+   targetFit:String(r.targetFit||""),summary:String(r.summary||""),
+   corrections:arr(r.corrections).map(c=>({original:String(c.original||""),fixed:String(c.fixed||""),why:String(c.why||"")})),
+   points:arr(r.points).map(p=>({id:uid(),kind:p.kind==="vocab"?"vocab":"grammar",title:String(p.title||""),meaning:String(p.meaning||""),explanation:String(p.explanation||""),example:String(p.example||"")})),
+   polished:String(r.polished||""),whyHigher:String(r.whyHigher||"")};
+  attempts=[a,...attempts].slice(0,40);sv("toeic:attempts",attempts);
+  $("res").textContent="";$("res").appendChild(attemptView(a));$("res").scrollIntoView({behavior:"smooth"});
+ }catch(e){err.textContent=aiErr(e)||"Chưa chữa được, thử lại sau ít phút."}
+ b.disabled=false;b.textContent="Chữa và viết lại";
+};
+
+/* ---- hiển thị bài chữa ---- */
+function pointCard(p){const d=el("div","box");
+ d.append(el("p","tag",p.kind==="grammar"?"Điểm ngữ pháp trong bài sửa":"Từ vựng trong bài sửa"),el("h3","",p.title),el("p","",p.meaning),el("p","meta",p.explanation),el("p","ex",p.example),spd(pspeech(p)));return d}
+function attemptView(a){
+ const w=el("article","card");
+ w.append(el("p","tag",`${a.field} · ${TNAME[a.task]} · mục tiêu ${a.target}`),el("h2","",a.promptTitle));
+ const sb=el("div","box");sb.append(el("p","big",`${TNAME[a.task]} ${a.taskScore}/${a.taskMax}`),el("p","",a.rubricNote));
+ if(a.checks.length){const u=el("ul");a.checks.forEach(c=>{const li=el("li");li.append(el("b",c.met?"ok":"low",c.met?"Đạt ":"Hụt "),el("span","",c.label+(c.detail?" — "+c.detail:"")));u.appendChild(li)});sb.appendChild(u)}
+ w.append(sb,el("p","",a.targetFit),el("p","meta",a.summary));
+ if(a.points.length){const chips=el("div","row"),slot=el("div");let act=a.points[0];
+  const show=()=>{slot.textContent="";slot.appendChild(pointCard(act));[...chips.children].forEach((b,i)=>b.setAttribute("aria-pressed",String(a.points[i]===act)))};
+  a.points.forEach(p=>{const b=el("button","btn",(p.kind==="grammar"?"Ngữ pháp: ":"Từ: ")+p.title);b.type="button";b.onclick=()=>{act=p;show()};chips.appendChild(b)});
+  w.append(chips,slot);show()}
+ const g=el("div","two"),L=el("div","box"),R=el("div","box");
+ L.append(el("h3","","Bài gốc"),el("p","pre",a.original));
+ a.corrections.forEach(c=>{const d=el("div","fix");d.append(el("div","o",c.original),el("div","b",c.fixed),spd(c.fixed),el("div","meta",c.why));L.appendChild(d)});
+ R.append(el("h3","","Bản viết lại, cao điểm hơn"),el("p","pre",a.polished),spd(a.polished),el("p","",a.whyHigher));
+ g.append(L,R);w.appendChild(g);return w}
+
+/* ---- sổ tay ---- */
+function renderNotes(){
+ const h=$("n");h.textContent="";
+ const learned=[];attempts.forEach(a=>a.points.forEach(p=>learned.push([a,p])));
+ if(!learned.length)h.appendChild(el("p","card meta","Chưa có mục nào từ bài chữa. Hãy nộp một bài, mỗi điểm ngữ pháp và từ mới sẽ xuất hiện ở đây."));
+ learned.forEach(([a,p])=>{const c=el("article","card"),r=el("div","pt"),l=el("div");
+  l.append(el("p","tag",`${p.kind==="grammar"?"Ngữ pháp":"Từ vựng"} · ${a.promptTitle}`),el("h3","",p.title),el("p","",p.meaning),el("p","meta",p.explanation),el("p","ex",p.example),spd(pspeech(p)));
+  const bx=el("div","row");const o=el("button","btn","Mở bài chữa");o.onclick=()=>{openId=a.id;document.querySelectorAll("#tabs .btn")[3].click()};
+  const d=el("button","btn","Xóa");d.onclick=()=>{a.points=a.points.filter(x=>x!==p);sv("toeic:attempts",attempts);renderNotes()};
+  bx.append(o,d);l.appendChild(bx);r.appendChild(l);c.appendChild(r);h.appendChild(c)});
+ if(notes.length)h.appendChild(el("h2","","Ghi chú tay"));
+ notes.forEach(n=>{const c=el("article","card");c.append(el("p","tag",n.kind==="grammar"?"Ngữ pháp":"Từ vựng"),el("h3","",n.title),el("p","pre",n.body),spd(eng(n.title+"\n"+n.body)));
+  const d=el("button","btn","Xóa");d.onclick=()=>{notes=notes.filter(x=>x.id!==n.id);sv("toeic:notes",notes);renderNotes()};c.appendChild(d);h.appendChild(c)});
+ const f=el("form","card");let kind="grammar";
+ const ti=el("input");ti.placeholder="Tên cấu trúc hoặc từ";const bo=el("textarea");bo.style.minHeight="100px";bo.placeholder="Nghĩa, cách dùng, ví dụ của bạn";
+ const kr=el("div","row");const kb=[["grammar","Ngữ pháp"],["vocab","Từ vựng"]].map(([k,l])=>{const b=el("button","btn",l);b.type="button";b.onclick=()=>{kind=k;kb.forEach((x,i)=>x.setAttribute("aria-pressed",String(["grammar","vocab"][i]===k)))};b.setAttribute("aria-pressed",String(k==="grammar"));kr.appendChild(b);return b});
+ const sb=el("button","btn pri","Lưu vào sổ");sb.type="submit";
+ f.onsubmit=e=>{e.preventDefault();if(!ti.value.trim()||!bo.value.trim())return;notes=[{id:uid(),kind,title:ti.value.trim(),body:bo.value.trim(),createdAt:Date.now()},...notes];sv("toeic:notes",notes);renderNotes()};
+ f.append(el("h2","","Thêm ghi chú"),kr,ti,bo,sb);h.appendChild(f);
+}
+
+/* ---- lịch sử ---- */
+function renderHistory(){
+ const h=$("h");h.textContent="";
+ if(!attempts.length){h.appendChild(el("p","card meta","Chưa có bài nào được chữa."));return}
+ if(!openId||!attempts.some(a=>a.id===openId))openId=attempts[0].id;
+ const wrap=el("div","hist"),list=el("div"),view=el("div");
+ attempts.forEach(a=>{const b=el("button","btn",`${a.promptTitle} · ${TNAME[a.task]} ${a.taskScore}/${a.taskMax}`);b.style.cssText="display:block;width:100%;text-align:left;margin-top:8px;border-radius:16px";b.setAttribute("aria-pressed",String(a.id===openId));b.onclick=()=>{openId=a.id;renderHistory()};list.appendChild(b)});
+ const cur=attempts.find(a=>a.id===openId);view.appendChild(attemptView(cur));
+ const d=el("button","btn","Xóa bài này");d.style.marginTop="10px";d.onclick=()=>{attempts=attempts.filter(a=>a.id!==cur.id);sv("toeic:attempts",attempts);openId=null;renderHistory()};view.appendChild(d);
+ wrap.append(list,view);h.appendChild(wrap);
+}
+
+/* ---- ôn tập: đề thi thật + nhớ nghĩa ---- */
+const shuf=a=>{const n=[...a];for(let i=n.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[n[i],n[j]]=[n[j],n[i]]}return n};
+const aiErr=e=>!e?null:e.code==="rate_limited"?"Bạn thao tác hơi nhanh, đợi chút rồi thử lại nhé.":e.code==="not_granted"?"Bạn đã từ chối quyền dùng AI.":e.code==="bad_key"?"Key hoặc tên model chưa đúng. Hãy kiểm tra trong ⚙️ Cài đặt AI.":e.code==="network"?"Không kết nối được tới AI. Kiểm tra mạng rồi thử lại.":null;
+function cards(){
+ const out=[];
+ attempts.forEach(a=>a.points.forEach(p=>{if(p.title&&(p.meaning||p.example))out.push({id:a.id+"-"+p.id,kind:p.kind,title:p.title,clue:p.meaning||p.example,note:[p.meaning,p.explanation,p.example].filter(Boolean).join(" ")})}));
+ notes.forEach(n=>{if(n.title&&n.body)out.push({id:n.id,kind:n.kind,title:n.title,clue:n.body,note:n.body})});
+ const seen=new Set();return out.filter(c=>{const k=c.title.trim().toLowerCase();if(seen.has(k))return false;seen.add(k);return true})}
+let gmode="exam";
+function renderGame(){
+ const h=$("g");h.textContent="";const cs=cards();
+ if(!cs.length){h.appendChild(el("p","card meta","Chưa có gì trong sổ. Hãy chữa một bài hoặc ghi một điểm ngữ pháp, từ vựng; đề Part 5 và câu theo tranh sẽ bám đúng những mục đó."));return}
+ const row=el("div","row");
+ [["exam","Đề thi thật"],["meaning","Nhớ nghĩa"]].forEach(([k,l])=>{const b=el("button","btn",l);b.type="button";b.setAttribute("aria-pressed",String(gmode===k));b.onclick=()=>{stopSay();gmode=k;renderGame()};row.appendChild(b)});
+ const box=el("section","card");h.append(row,box);
+ gmode==="exam"?examDrill(box,cs):meaningQuiz(box,cs);
+}
+function drillPrompt(pts){
+ return `You write original TOEIC-style practice items for a Vietnamese learner. Items must follow published ETS formats. Do not copy official ETS items.
+Each notebook point becomes TWO tasks:
+1) TOEIC Part 5 (Incomplete Sentences): one or two workplace sentences, exactly one blank written as _______, four options, exactly one defensible answer.
+2) TOEIC Writing Questions 1-5 (Write a sentence based on a picture), as a text picture with two keywords; the learner may change word forms.
+Rules: the blank must test THAT notebook point. Word-form points: four forms of one word family, only one fits the syntax. Tense, preposition, conjunction or clause points: four real traps, only one grammatical. Vocabulary points: four words a candidate might confuse, only one collocates and fits. Business context only (office, HR, shipping, travel, purchasing, finance, training, customer service). Reject your own item if two choices could be correct. Do not reuse the example sentence from the note. Picture: a concrete present-moment workplace scene in one or two English sentences, plus TWO base-form keywords; if the point is vocabulary, one keyword must be that word. why: Vietnamese, 2-4 sentences, quote the option WORDS, never write the letters A, B, C or D, say why each wrong word fails. studyUse: short Vietnamese instruction on how to use the notebook point in the sentence.
+Return ONLY JSON: {"items":[{"id":"...","part5":{"stem":"...","correct":"...","distractors":["...","...","..."],"why":"..."},"scene":"...","words":["...","..."],"studyUse":"..."}]}. The id must match the notebook id; correct is the option text, not a letter.
+NOTEBOOK POINTS:
+`+pts.map((p,i)=>`${i+1}. id=${p.id}\nkind=${p.kind}\ntitle=${p.title}\nnote=${String(p.note).slice(0,400)}`).join("\n\n");
+}
+function gradePrompt(list){
+ return `You are a strict, honest ETS-style TOEIC Writing rater (Questions 1-5, write one sentence based on a picture, score 0-3). Score 3 only if: exactly one sentence, no grammar errors, both required words used (any form), and it matches the scene. Do not inflate. Separately judge whether the student correctly used the notebook point (this does NOT affect the 0-3 score).
+Return ONLY JSON: {"grades":[{"id":"...","taskScore":0,"rubricNote":"1-2 câu tiếng Việt","checks":[{"label":"tiêu chí tiếng Việt","met":true,"detail":"ngắn gọn"}],"usesTargetPoint":true,"pointComment":"1 câu tiếng Việt về việc dùng mục sổ tay"}]} with 3-4 checks each.
+ITEMS:
+`+list.map(i=>`id=${i.id}\nscene=${i.scene}\nrequired words=${i.words.join(", ")}\nnotebook point=${i.title} (${i.note})\nstudent sentence=${sents0(i)}`).join("\n\n");
+}
+let _sents={};const sents0=i=>(_sents[i.id]||"").trim();
+function examDrill(box,cs){
+ let phase="idle",err="",items=[],picks={},sents={},grades=[];
+ const draw=()=>{
+  box.textContent="";
+  box.append(el("h2","","Vận dụng sổ tay"),el("p","meta",`Mỗi mục thành một câu Part 5 và một câu viết theo tranh. Trắc nghiệm chấm đúng/sai, câu viết chấm 0–3 theo rubric ETS. ${cs.length} mục trong sổ.`));
+  if(err)box.appendChild(el("p","low",err));
+  if(phase==="idle"){const b=el("button","btn pri","Ra đề từ sổ");b.onclick=start;box.appendChild(b)}
+  else if(phase==="loading"||phase==="grading")box.appendChild(el("p","meta",phase==="loading"?"Đang soạn đề theo format ETS…":"Đang chấm câu viết theo rubric 0–3…"));
+  else if(phase==="part5"){
+   box.append(el("p","tag","Part 5 · Incomplete Sentences"),el("p","meta","A word or phrase is missing. Choose the one best answer."));
+   const go=el("button","btn pri","Nộp trắc nghiệm, sang phần viết");go.disabled=items.some(i=>!picks[i.id]);go.onclick=()=>{phase="writing";draw()};
+   items.forEach((it,n)=>{const a=el("article","box");a.append(el("p","tag",`${it.kind==="grammar"?"Ngữ pháp":"Từ vựng"} · ${it.title}`),el("h3","",`${n+1}. ${it.stem}`));
+    const bs=[];it.choices.forEach((c,ci)=>{const L="ABCD"[ci],b=el("button","btn",`(${L}) ${c}`);b.type="button";b.style.cssText="display:block;width:100%;text-align:left;margin-top:6px;border-radius:16px";b.setAttribute("aria-pressed",String(picks[it.id]===L));
+     b.onclick=()=>{picks[it.id]=L;bs.forEach((x,k)=>x.setAttribute("aria-pressed",String("ABCD"[k]===L)));go.disabled=items.some(i=>!picks[i.id])};bs.push(b);a.appendChild(b)});box.appendChild(a)});
+   box.appendChild(go)}
+  else if(phase==="writing"){
+   box.append(el("p","tag","Writing · Questions 1–5"),el("p","meta","Viết MỘT câu dựa trên tranh, dùng cả hai từ. Được đổi dạng và đổi thứ tự. Tranh được mô tả bằng chữ."));
+   items.forEach((it,n)=>{const a=el("article","box"),t=el("textarea");t.style.minHeight="90px";t.placeholder="Một câu hoàn chỉnh...";t.value=sents[it.id]||"";t.oninput=()=>{sents[it.id]=t.value};
+    a.append(el("p","tag",`Câu ${n+1} · sổ: ${it.title}`),el("p","",`Tranh: ${it.scene}`),spd(it.scene),el("p","big",`Từ bắt buộc: ${it.words.join(" · ")}`),el("p","meta",`Yêu cầu sổ tay, ngoài rubric ETS: ${it.studyUse}`),t);box.appendChild(a)});
+   const s=el("button","btn pri","Nộp phần viết");s.onclick=gradeIt;box.appendChild(s)}
+  else if(phase==="report"){
+   const p5=items.filter(i=>picks[i.id]===i.answer).length,ws=grades.reduce((x,g)=>x+g.taskScore,0),nb=grades.filter(g=>g.usesTargetPoint).length;
+   const sc=el("div","scs");[["Part 5",`${p5}/${items.length}`,"mỗi câu 1 điểm"],["Câu viết",`${ws}/${items.length*3}`,"thô ETS, tối đa 3/câu"],["Sổ tay",`${nb}/${grades.length}`,"không cộng vào ETS"]].forEach(([l,v,d])=>{const c=el("div","sc");c.append(el("span","",l),el("b","",v),el("span","",d));sc.appendChild(c)});box.appendChild(sc);
+   items.forEach(it=>{const g=grades.find(x=>x.id===it.id),pk=picks[it.id],right=pk===it.answer,a=el("article","box");
+    const filled=it.stem.replace(/_{3,}/,it.correct);
+    a.append(el("h3","",it.title),el("p",right?"ok":"low",`Part 5: ${right?"Đúng":"Sai"} · đáp án (${it.answer})`),el("p","",it.stem),el("p","ex",filled),spd(filled),el("p","meta",`Bạn chọn (${pk||"—"}) ${pk?it.choices["ABCD".indexOf(pk)]:""}`),el("p","",it.why));
+    const sentence=(sents[it.id]||"").trim();
+    a.append(el("p","big",`Câu viết: ${g?g.taskScore:"—"}/3 · sổ tay: ${g&&g.usesTargetPoint?"đã dùng":"chưa dùng"}`),el("p","meta",sentence||"(bỏ trống)"));
+    if(sentence)a.appendChild(spd(sentence));
+    if(g){a.append(el("p","",g.rubricNote),el("p","meta",g.pointComment));if(g.checks.length){const u=el("ul");g.checks.forEach(c=>{const li=el("li");li.append(el("b",c.met?"ok":"low",c.met?"Đạt ":"Hụt "),el("span","",c.label+(c.detail?" — "+c.detail:"")));u.appendChild(li)});a.appendChild(u)}}
+    box.appendChild(a)});
+   const r=el("button","btn pri","Ra đề khác");r.onclick=start;box.appendChild(r)}
+ };
+ async function start(){
+  err="";if(!aiReady()){err="Chưa có AI: mở ⚙️ Cài đặt AI để dán key Gemini (miễn phí) hoặc key Claude.";phase="idle";draw();return}
+  phase="loading";picks={};sents={};_sents=sents;grades=[];draw();
+  try{
+   const chosen=shuf(cs).slice(0,Math.min(4,cs.length));
+   const r=await askJSON(drillPrompt(chosen));
+   const rows=Array.isArray(r.items)?r.items:[];
+   items=chosen.map((p,i)=>{const row=rows.find(x=>x&&x.id===p.id)||rows[i]||{},p5=row.part5||{};
+    const correct=String(p5.correct||"").trim(),dis=Array.isArray(p5.distractors)?p5.distractors.map(x=>String(x).trim()):[];
+    const ch=[correct,...dis].filter(Boolean),stem=String(p5.stem||"").trim(),words=Array.isArray(row.words)?row.words.map(x=>String(x).trim()).filter(Boolean):[];
+    if(!/_{3,}/.test(stem)||ch.length!==4||new Set(ch.map(x=>x.toLowerCase())).size!==4||words.length<2||!row.scene)throw 0;
+    const order=shuf(ch),why=(String(p5.why||"").match(/[^.!?]+[.!?]*/g)||[]).filter(s=>!/\b[ABCD]\b/.test(s)).join(" ").trim();
+    return{id:p.id,kind:p.kind,title:p.title,note:p.note,stem:stem.slice(0,400),choices:order,answer:"ABCD"[order.indexOf(correct)],correct,why:`Đáp án đúng là “${correct}”. ${why||"Câu này kiểm tra: "+p.title+"."}`,scene:String(row.scene).slice(0,500),words:[words[0].slice(0,32),words[1].slice(0,32)],studyUse:String(row.studyUse||p.title).slice(0,180)}});
+   phase="part5";
+  }catch(e){err=aiErr(e)||"Không ra được đề, hãy thử lại.";phase="idle"}
+  draw();
+ }
+ async function gradeIt(){
+  err="";phase="grading";_sents=sents;draw();
+  const pend=items.filter(i=>(sents[i.id]||"").trim());
+  try{
+   let rows=[];if(pend.length){const r=await askJSON(gradePrompt(pend));rows=Array.isArray(r.grades)?r.grades:[]}
+   grades=items.map(it=>{const g=rows.find(x=>x&&x.id===it.id)||{},has=!!(sents[it.id]||"").trim();
+    return{id:it.id,taskScore:has?Math.max(0,Math.min(3,Math.round(Number(g.taskScore)||0))):0,rubricNote:has?String(g.rubricNote||""):"Bỏ trống, 0 điểm.",
+     checks:(Array.isArray(g.checks)?g.checks:[]).map(c=>({label:String(c.label||""),met:c.met===true,detail:String(c.detail||"")})),usesTargetPoint:has&&g.usesTargetPoint===true,pointComment:has?String(g.pointComment||""):""}});
+   phase="report";
+  }catch(e){err=aiErr(e)||"Không chấm được phần viết, hãy thử lại.";phase="writing"}
+  draw();
+ }
+ draw();
+}
+function meaningQuiz(box,cs){
+ let queue=[],picked=null,score=0,asked=0,done=false,started=false;
+ const draw=()=>{
+  box.textContent="";box.append(el("h2","","Nhớ nghĩa"),el("p","meta","Chỉ để thuộc ghi chú. Phần tính điểm nằm ở Đề thi thật."),el("p","tag",asked>0?`${score}/${asked}`:`${cs.length} mục`));
+  if(!started||done){
+   if(done)box.appendChild(el("p","big",`${score}/${asked}. ${score===asked?"Khớp hết nghĩa.":"Xem lại mục sai trong sổ."}`));
+   const b=el("button","btn pri",done?"Chơi lại":"Bắt đầu");b.onclick=()=>{queue=shuf(cs).slice(0,Math.min(8,cs.length));picked=null;score=0;asked=0;done=false;started=true;draw()};box.appendChild(b);return}
+  const cur=queue[0];if(!cur.ch)cur.ch=shuf([cur,...shuf(cs.filter(c=>c.id!==cur.id)).slice(0,3)]);
+  box.append(el("p","tag",cur.kind==="grammar"?"Ngữ pháp":"Từ vựng"),el("h3","",cur.title),spd(eng(cur.title)));
+  cur.ch.forEach(c=>{const b=el("button","btn",c.clue);b.type="button";b.style.cssText="display:block;width:100%;text-align:left;margin-top:8px;border-radius:16px";
+   if(picked){b.disabled=true;b.style.opacity="1";if(c.id===cur.id){b.style.background="var(--mint)";b.style.color="#3a2a34"}else if(picked===c.id){b.style.background="var(--pink)";b.style.color="var(--btnt)"}}
+   b.onclick=()=>{if(picked)return;picked=c.id;asked++;if(c.id===cur.id)score++;draw()};box.appendChild(b)});
+  if(picked){const n=el("button","btn pri",queue.length===1?"Xem kết quả":"Câu tiếp");n.style.marginTop="10px";n.onclick=()=>{queue=queue.slice(1);picked=null;if(!queue.length)done=true;draw()};box.appendChild(n)}
+ };
+ draw();
+}
+
+/* ---- nhạc nền nhẹ ---- */
+let mctx=null,mtimer=null,mstep=0;
+const MEL=[523.25,659.25,783.99,659.25,587.33,523.25,440,523.25],BAS=[261.63,196,220,174.61];
+function tone(f,when,dur,type,gain){const o=mctx.createOscillator(),g=mctx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,when);g.gain.linearRampToValueAtTime(gain,when+.03);g.gain.exponentialRampToValueAtTime(.0001,when+dur);o.connect(g);g.connect(mctx.destination);o.start(when);o.stop(when+dur+.02)}
+function mtick(){const now=mctx.currentTime,n=MEL[mstep%MEL.length];tone(n,now,.42,"sine",.05);tone(n*2,now,.18,"triangle",.012);if(mstep%2===0)tone(BAS[(mstep/2)%BAS.length],now,.7,"sine",.028);mstep++}
+$("mus").onclick=()=>{const b=$("mus");
+ if(mtimer){clearInterval(mtimer);mtimer=null;b.setAttribute("aria-pressed","false");return}
+ try{mctx=mctx||new(window.AudioContext||window.webkitAudioContext)();mctx.resume();mtick();mtimer=setInterval(mtick,480);b.setAttribute("aria-pressed","true")}catch(e){b.textContent="🎵 Không bật được nhạc"}};
+
+const STK={"star": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><path d=\"M40 8l9 18 20 3-14 14 3 20-18-10-18 10 3-20L11 29l20-3z\" fill=\"#e889a8\" stroke=\"#fff\" stroke-width=\"4\"/></svg>", "smile": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><path d=\"M40 6l8 16 18 3-13 12 3 18-16-8-16 8 3-18L14 25l18-3z\" fill=\"#f3d37a\" stroke=\"#fff\" stroke-width=\"4\"/><circle cx=\"34\" cy=\"36\" r=\"2.2\" fill=\"#3a2a34\"/><circle cx=\"46\" cy=\"36\" r=\"2.2\" fill=\"#3a2a34\"/><path d=\"M33 44c2 3 12 3 14 0\" fill=\"none\" stroke=\"#3a2a34\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>", "pencil": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><g transform=\"rotate(18 40 40)\"><rect x=\"30\" y=\"10\" width=\"14\" height=\"8\" rx=\"2\" fill=\"#f3d37a\" stroke=\"#fff\" stroke-width=\"3\"/><rect x=\"30\" y=\"18\" width=\"14\" height=\"36\" rx=\"2\" fill=\"#7ec8c3\" stroke=\"#fff\" stroke-width=\"3\"/><polygon points=\"30,54 44,54 37,68\" fill=\"#e889a8\" stroke=\"#fff\" stroke-width=\"3\"/></g></svg>", "book": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><path d=\"M14 22h24c3 0 6 2 6 6v30H22c-4 0-8-2-8-7V22z\" fill=\"#fff\" stroke=\"#e889a8\" stroke-width=\"3\"/><path d=\"M66 22H42c-3 0-6 2-6 6v30h22c4 0 8-2 8-7V22z\" fill=\"#ffe4ee\" stroke=\"#e889a8\" stroke-width=\"3\"/><path d=\"M40 14l3 6 6 1-4.5 4 1 6L40 28l-5.5 3 1-6L31 21l6-1z\" fill=\"#f3d37a\"/></svg>", "heart": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><path d=\"M40 68C14 50 8 34 16 24c7-8 18-6 24 4 6-10 17-12 24-4 8 10 2 26-24 44z\" fill=\"#e889a8\" stroke=\"#fff\" stroke-width=\"4\"/><ellipse cx=\"25\" cy=\"30\" rx=\"5\" ry=\"3\" fill=\"#fff\" opacity=\".6\" transform=\"rotate(-30 25 30)\"/></svg>", "cloud": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><g fill=\"#d4ecf7\" stroke=\"#fff\" stroke-width=\"3\"><circle cx=\"26\" cy=\"48\" r=\"13\"/><circle cx=\"42\" cy=\"38\" r=\"16\"/><circle cx=\"58\" cy=\"48\" r=\"12\"/><rect x=\"24\" y=\"46\" width=\"36\" height=\"14\" rx=\"7\"/></g><circle cx=\"36\" cy=\"50\" r=\"1.8\" fill=\"#3a2a34\"/><circle cx=\"48\" cy=\"50\" r=\"1.8\" fill=\"#3a2a34\"/><path d=\"M38 54c2 2 6 2 8 0\" fill=\"none\" stroke=\"#3a2a34\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>", "flower": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><g fill=\"#f7b6cb\" stroke=\"#fff\" stroke-width=\"3\"><circle cx=\"40\" cy=\"20\" r=\"12\"/><circle cx=\"60\" cy=\"35\" r=\"12\"/><circle cx=\"52\" cy=\"58\" r=\"12\"/><circle cx=\"28\" cy=\"58\" r=\"12\"/><circle cx=\"20\" cy=\"35\" r=\"12\"/></g><circle cx=\"40\" cy=\"42\" r=\"10\" fill=\"#f3d37a\" stroke=\"#fff\" stroke-width=\"3\"/></svg>", "sparkle": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><path d=\"M40 6l6 28 28 6-28 6-6 28-6-28-28-6 28-6z\" fill=\"#f3d37a\" stroke=\"#fff\" stroke-width=\"4\" stroke-linejoin=\"round\"/></svg>", "candy": "<svg viewBox=\"0 0 80 80\" aria-hidden=\"true\"><rect x=\"37\" y=\"42\" width=\"6\" height=\"32\" rx=\"3\" fill=\"#fff\" stroke=\"#e889a8\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"30\" r=\"22\" fill=\"#7ec8c3\" stroke=\"#fff\" stroke-width=\"4\"/><path d=\"M40 30m-14 0a14 14 0 1 0 28 0a14 14 0 1 0-28 0M40 30m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3\"/></svg>"};
+document.querySelectorAll("[data-k]").forEach(e=>{e.innerHTML=STK[e.dataset.k]});
+function curTheme(){return document.documentElement.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}
+function paintTheme(){const d=curTheme()==="dark";THM.textContent=d?"☀️ Sáng":"🌙 Tối";THM.setAttribute("aria-label",d?"Chuyển sang giao diện sáng":"Chuyển sang giao diện tối")}
+THM.onclick=()=>{const n=curTheme()==="dark"?"light":"dark";document.documentElement.dataset.theme=n;try{localStorage.setItem("toeic:theme",n)}catch(e){}paintTheme()};
+paintTheme();
+(()=>{const h=$("bubbles");if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ for(let i=0;i<16;i++){const b=document.createElement("i");b.className="bub";const z=14+Math.random()*56;
+  b.style.cssText=`width:${z}px;height:${z}px;left:${Math.random()*100}%;--d:${20+Math.random()*22}s;--delay:-${(Math.random()*30).toFixed(1)}s;--sw:${((Math.random()*60+20)*(Math.random()<.5?-1:1)).toFixed(0)}px`;h.appendChild(b)}})();
+$("demo").appendChild(spd("Hello! Welcome to TOEIC Star Desk. Let us practise writing today."));
+let _ip=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();_ip=e;$("inst").style.display=""});
+window.addEventListener("appinstalled",()=>{$("inst").style.display="none";_ip=null});
+$("inst").onclick=async()=>{if(!_ip)return;_ip.prompt();try{await _ip.userChoice}catch(e){}_ip=null;$("inst").style.display="none"};
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!window.matchMedia("(display-mode: standalone)").matches&&!navigator.standalone)$("insthint").style.display="";
+if("serviceWorker" in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register("sw.js").catch(()=>{});
+renderTabs();renderPrompt();
+(function(){
+ [["Kore","Kore · rõ ràng, chắc"],["Puck","Puck · vui tươi"],["Zephyr","Zephyr · tươi sáng"],["Leda","Leda · trẻ trung"],["Aoede","Aoede · nhẹ nhàng"],["Charon","Charon · thông tin"]].forEach(([v,l])=>$("voice").appendChild(new Option(l,v)));
+ [["warm","Phong cách: ấm áp như cô giáo"],["cheer","Phong cách: vui tươi"],["calm","Phong cách: điềm tĩnh"]].forEach(([v,l])=>$("style").appendChild(new Option(l,v)));
+ const fill=()=>{$("gk").value=cfg.gkey;$("ck").value=cfg.ckey;$("prov").value=cfg.provider;$("eng").value=cfg.engine;$("voice").value=cfg.voice;$("style").value=cfg.style;$("gm").value=cfg.gmodel;$("gt").value=cfg.gtts;$("cm").value=cfg.cmodel};
+ const read=()=>{cfg.gkey=$("gk").value.trim();cfg.ckey=$("ck").value.trim();cfg.provider=$("prov").value;cfg.engine=$("eng").value;cfg.voice=$("voice").value;cfg.style=$("style").value;cfg.gmodel=$("gm").value.trim()||CFG0.gmodel;cfg.gtts=$("gt").value.trim()||CFG0.gtts;cfg.cmodel=$("cm").value.trim()||CFG0.cmodel};
+ fill();
+ $("aivoice").appendChild(spd("Hello! Welcome to TOEIC Star Desk. Are you ready to practise writing today?"));
+ $("aisave").onclick=()=>{read();saveCfg();refreshAI();$("aimsg").textContent="Đã lưu."};
+ $("aiclear").onclick=()=>{cfg.gkey="";cfg.ckey="";saveCfg();fill();refreshAI();$("aimsg").textContent="Đã xóa key khỏi trình duyệt."};
+ $("aitest").onclick=async()=>{read();saveCfg();refreshAI();const m=$("aimsg");
+  if(!aiReady()){m.textContent="Chưa có key. Hãy dán key Gemini hoặc Claude rồi bấm Lưu.";return}
+  m.textContent="Đang thử…";
+  try{const r=await askJSON('Reply ONLY with JSON: {"ok":true,"hello":"a short friendly greeting in Vietnamese"}');m.textContent="AI hoạt động: "+String(r.hello||"ok")}
+  catch(e){m.textContent=aiErr(e)||"Chưa gọi được AI, kiểm tra lại key."}};
+ $("aidl").onclick=()=>{read();saveCfg();const m=$("aimsg");
+  if(!cfg.gkey&&!cfg.ckey){m.textContent="Hãy dán key và bấm Lưu trước.";return}
+  const emb=JSON.stringify({provider:cfg.provider,gkey:cfg.gkey,ckey:cfg.ckey,engine:cfg.engine,voice:cfg.voice,style:cfg.style,gmodel:cfg.gmodel,gtts:cfg.gtts,cmodel:cfg.cmodel}).replace(/</g,"\\u003c");
+  const html=SRC0.replace(/const EMBED=.*?;\/\*EMBED\*\//,()=>"const EMBED="+emb+";/"+"*EMBED*/");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([html],{type:"text/html"}));a.download="toeic-star-desk-key.html";document.body.appendChild(a);a.click();a.remove();
+  m.textContent="Đã tạo file toeic-star-desk-key.html. Mở file đó là dùng luôn, không cần nhập key."};
+ ["gk","ck"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")$("aisave").click()}));
+})();
+refreshAI();$("aiset").open=!aiReady();
+(async()=>{try{sample=await claude.use("sample")}catch(e){sample=null}refreshAI();if(sample)$("aiset").open=false})();
+</script>
+</body>
+</html>
